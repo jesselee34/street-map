@@ -76,8 +76,8 @@ TEST_F(RoutePlannerTest, TestAddNeighbors) {
     route_planner.AddNeighbors(start_node);
 
     // Correct h and g values for the neighbors of start_node.
-    std::vector<float> start_neighbor_g_vals{0.10671431, 0.082997195, 0.051776856, 0.055291083};
-    std::vector<float> start_neighbor_h_vals{1.1828455, 1.0998145, 1.0858033, 1.1831238};
+    std::vector<float> start_neighbor_g_vals{0.082997195, 0.10671431, 0.055291083, 0.051776856};
+    std::vector<float> start_neighbor_h_vals{1.0998145, 1.1828455, 1.1831238, 1.0858033};
     auto neighbors = start_node->neighbors;
     EXPECT_EQ(neighbors.size(), 4);
 
@@ -97,7 +97,6 @@ TEST_F(RoutePlannerTest, TestConstructFinalPath) {
     mid_node->parent = start_node;
     end_node->parent = mid_node;
     std::vector<RouteModel::Node> path = route_planner.ConstructFinalPath(end_node);
-
     // Test the path.
     EXPECT_EQ(path.size(), 3);
     EXPECT_FLOAT_EQ(start_node->x, path.front().x);
