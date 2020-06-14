@@ -52,28 +52,28 @@ int main(int argc, const char **argv)
             osm_data = std::move(*data);
     }
 
-    // float start_x;
-    // float start_y;
-    // float end_x;
-    // float end_y;
+    float start_x;
+    float start_y;
+    float end_x;
+    float end_y;
 
-    // std::cout << "Enter a starting x coordinate: " << "\n";
-    // std::cin >> start_x;
+    std::cout << "Enter a starting x coordinate: " << "\n";
+    std::cin >> start_x;
 
-    // std::cout << "Enter a starting y coordinate: " << "\n";
-    // std::cin >> start_y;
+    std::cout << "Enter a starting y coordinate: " << "\n";
+    std::cin >> start_y;
 
-    // std::cout << "Enter the ending x coordinate: " << "\n";
-    // std::cin >> end_x;
+    std::cout << "Enter the ending x coordinate: " << "\n";
+    std::cin >> end_x;
 
-    // std::cout << "Enter the ending y coordinate: " << "\n";
-    // std::cin >> end_x;
+    std::cout << "Enter the ending y coordinate: " << "\n";
+    std::cin >> end_y;
 
     // Build Model.
     RouteModel model{osm_data};
     std::cout << "Built the Model" << "\n";
     // Create RoutePlanner object and perform A* search.
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
     route_planner.AStarSearch();
 
     std::cout << "Distance: " << route_planner.GetDistance() << " meters. \n";
